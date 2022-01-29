@@ -23,4 +23,5 @@ public class LevelData : MonoBehaviour
     public float LanternStartAmount => rawLevelData.lanternStartAmount;
     public PlayerInputHandler InputHandler => input;
     public LightHandler LightHandler => lightHandler;
+    public string TutorialText => rawLevelData.tutorialText;
 }
