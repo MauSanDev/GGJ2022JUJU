@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 943977353}
   - component: {fileID: 943977352}
   - component: {fileID: 943977351}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  lookAtMousePos: 0
 --- !u!114 &943977353
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,10 +30,11 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateRotation()
     {
-        if (!lookAtMousePos) return;
-        
-        Vector2 targetDirection = _inputHandler.MouseWorldPos - _rigidbody.position;
-        float targetRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90f;
-        _rigidbody.rotation = targetRotation;
+        if (lookAtMousePos)
+        {
+            Vector2 targetDirection = _inputHandler.MouseWorldPos - _rigidbody.position;
+            float targetRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90f;
+            _rigidbody.rotation = targetRotation;    
+        }
     }
 }
