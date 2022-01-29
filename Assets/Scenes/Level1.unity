@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -948048690545479204, guid: 89682d1529d2ccc4486189400c687fdb, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 527489460}
     - target: {fileID: 8669560102630663462, guid: 89682d1529d2ccc4486189400c687fdb, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -180,6 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89682d1529d2ccc4486189400c687fdb, type: 3}
+--- !u!4 &201166624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8669560102630663462, guid: 89682d1529d2ccc4486189400c687fdb, type: 3}
+  m_PrefabInstance: {fileID: 201166623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471063859
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,14 +252,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &527489459
-AudioListener:
+--- !u!114 &527489459
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527489458}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef75c003c8b794882a7f565172b6a5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 201166624}
+  smoothness: 3
 --- !u!20 &527489460
 Camera:
   m_ObjectHideFlags: 0
