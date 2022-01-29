@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         InstantiateAudioSources();
+        PlaySound("SoftCreepyWind");
+        //PlaySound("DarkAmbience");
     }
 
     private void InstantiateAudioSources()

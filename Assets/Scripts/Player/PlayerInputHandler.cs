@@ -59,11 +59,15 @@ public class PlayerInputHandler : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             OnMouseClickHoldStart?.Invoke();
+            AudioManager.Instance.PlaySound("Switch_1");
+            AudioManager.Instance.PlaySound("Buzz_1");
         }
         
         if (Input.GetMouseButtonUp(0))
         {
             OnMouseClickHoldEnd?.Invoke();
+            AudioManager.Instance.PlaySound("Switch_2");
+            AudioManager.Instance.StopSound("Buzz_1");
         }
     }
 
