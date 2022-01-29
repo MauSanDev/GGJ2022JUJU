@@ -4,9 +4,12 @@ using UnityEngine;
 public class LevelLoop : MonoBehaviour
 {
     [SerializeField] private string nextLevelName;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerStartPos;
     private void Awake()
     {
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_LEVEL_COMPLETE, OnLevelComplete);
+        player.transform.position = playerStartPos.position;
     }
 
     private void OnDestroy()
