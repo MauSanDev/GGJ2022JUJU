@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056214980557686361}
   - component: {fileID: 4056214980557686362}
+  - component: {fileID: 519611074}
   m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1042762529
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.34901962}
@@ -82,6 +83,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &519611074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056214980557686363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b2ad092fda0449bb8574e8dcc90fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskInteraction: 2
 --- !u!1 &4056214980825008166
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056214980825008164}
   - component: {fileID: 4056214980825008165}
+  - component: {fileID: 847533930}
   m_Layer: 0
   m_Name: Blackout
   m_TagString: Untagged
@@ -150,8 +165,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1042762529
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 91c7d75406e2ba5428a56de75643e194, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8156863}
@@ -164,6 +179,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &847533930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056214980825008166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b2ad092fda0449bb8574e8dcc90fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maskInteraction: 2
 --- !u!1 &4455350710589563638
 GameObject:
   m_ObjectHideFlags: 0

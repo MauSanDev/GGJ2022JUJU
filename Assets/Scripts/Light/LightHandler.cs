@@ -8,6 +8,9 @@ public class LightHandler : MonoBehaviour
 {
     [FormerlySerializedAs("amountOfLightPerSecondToConsume")] [SerializeField] private float amountOfLightToConsume = 0.15f;
     [SerializeField] private float amountOfLightToRecharge = 0.20f;
+    [SerializeField] private Material onInactiveMaterial = null;
+    [SerializeField] private Material onActiveMaterial = null;
+    [SerializeField] private SpriteRenderer[] spriteRenderers = null;
     
     private float lightAmount;
     private Coroutine drainRoutine;
@@ -18,6 +21,7 @@ public class LightHandler : MonoBehaviour
         lightAmount = LevelData.CurrentLevelData.LanternStartAmount;
         input = LevelData.CurrentLevelData.InputHandler;
         
+        AssignMaterial(onInactiveMaterial);
         input.OnMouseClickHoldStart += OnMouseClickStart;
         input.OnMouseClickHoldEnd += OnMouseClickEnd;
         EventsManager.DispatchEvent(EvenManagerConstants.ON_UPDATE_LANTERN_VALUE, new object[] { lightAmount });
@@ -29,6 +33,16 @@ public class LightHandler : MonoBehaviour
         {
             StopCoroutine(drainRoutine);
             drainRoutine = null;
+            EventsManager.DispatchEvent(EvenManagerConstants.ON_DRAIN_STOP, new object[] { lightAmount });
+            AssignMaterial(onInactiveMaterial);
+        }
+    }
+
+    private void AssignMaterial(Material material)
+    {
+        foreach (SpriteRenderer renderer in spriteRenderers)
+        {
+            renderer.material = material;
         }
     }
 
@@ -37,6 +51,7 @@ public class LightHandler : MonoBehaviour
         if (HasLight && drainRoutine == null)
         {
             drainRoutine = StartCoroutine(DrainRoutineMethod());
+            AssignMaterial(onActiveMaterial);
         }
     }
 
