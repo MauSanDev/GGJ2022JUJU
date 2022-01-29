@@ -10,6 +10,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 KeyboardInput { get; private set; }
     public Vector2 MouseWorldPos { get; private set; }
 
+    public bool IsWalking => KeyboardInput != Vector2.zero;
+
     private void Awake()
     {
         _rayPlane = new Plane(Vector3.forward, Vector3.zero);
