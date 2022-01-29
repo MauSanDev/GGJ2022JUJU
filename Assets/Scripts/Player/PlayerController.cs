@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody = null;
     private PlayerInputHandler _inputHandler = null;
 
+    public Vector3 currMovement 
+    {
+        get;
+        private set;
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -26,6 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movement = _inputHandler.KeyboardInput.normalized * movementSpeed;
         _rigidbody.MovePosition(_rigidbody.position + movement * Time.fixedDeltaTime);
+
+        currMovement = movement * Time.fixedDeltaTime;
     }
 
     private void UpdateRotation()
