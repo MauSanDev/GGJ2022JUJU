@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody2D _rigidbody = null;
     private PlayerInputHandler _inputHandler = null;
+    private string[] _footsteps;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _inputHandler = GetComponent<PlayerInputHandler>();
+        _footsteps = new[] { "Footstep_1", "Footstep_2", "Footstep_3" };
+        EventsManager.SubscribeToEvent(EvenManagerConstants.ON_PLAYER_STEP, OnStep);
     }
 
     private void FixedUpdate()
@@ -34,7 +37,18 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 targetDirection = _inputHandler.MouseWorldPos - _rigidbody.position;
             float targetRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90f;
-            _rigidbody.rotation = targetRotation;    
+            _rigidbody.rotation = targetRotation;
         }
+    }
+
+    private void OnStep(object[] parameters)
+    {
+        int soundIndex = Utility.Random.Next(_footsteps.Length);
+        AudioManager.Instance.PlaySound(_footsteps[soundIndex]);
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.UnsubscribeToEvent(EvenManagerConstants.ON_PLAYER_STEP, OnStep);
     }
 }
