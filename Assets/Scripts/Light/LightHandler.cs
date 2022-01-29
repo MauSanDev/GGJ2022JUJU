@@ -80,6 +80,11 @@ public class LightHandler : MonoBehaviour
             OnDrain(lightAmount - amountOfLightToConsume * Time.deltaTime);
             yield return null;
         }
+
+        if (!HasLight)
+        {
+            OnMouseClickEnd();
+        }
     }
 
     private void OnDrain(float value)
