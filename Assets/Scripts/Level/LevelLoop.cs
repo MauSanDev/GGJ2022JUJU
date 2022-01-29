@@ -11,6 +11,13 @@ public class LevelLoop : MonoBehaviour
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_LEVEL_COMPLETE, OnLevelComplete);
         player.transform.position = playerStartPos.position;
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetCurrentLevel();
+        }
+    }
 
     private void OnDestroy()
     {
@@ -20,5 +27,10 @@ public class LevelLoop : MonoBehaviour
     private void OnLevelComplete(object[] parametercontainer)
     {
         SceneManager.LoadScene(nextLevelName);
+    }
+
+    public void ResetCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

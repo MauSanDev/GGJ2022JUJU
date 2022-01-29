@@ -4,6 +4,8 @@ using UnityEngine;
 public class ScriptableLevelData : ScriptableObject
 {
     public float lanternStartAmount;
+    public string tutorialText = "";
+    public float delayToShow = 1f;
     
     [MenuItem("Assets/Create/LevelDataConfig")]
     public static void CreateMyAsset()
