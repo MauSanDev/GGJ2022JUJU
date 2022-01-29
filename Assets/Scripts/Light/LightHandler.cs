@@ -14,6 +14,7 @@ public class LightHandler : MonoBehaviour
     
     private float lightAmount;
     private Coroutine drainRoutine;
+    private Coroutine blinkRoutine;
     private Coroutine chargeLightRoutine;
     private PlayerInputHandler input;
     private void Start()
@@ -53,6 +54,23 @@ public class LightHandler : MonoBehaviour
             drainRoutine = StartCoroutine(DrainRoutineMethod());
             AssignMaterial(onActiveMaterial);
         }
+        else
+        {
+            blinkRoutine = StartCoroutine(BlinkRoutine());
+        }
+    }
+
+    private IEnumerator BlinkRoutine()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            AssignMaterial(onActiveMaterial);
+            yield return new WaitForSeconds(0.05f);
+            AssignMaterial(onInactiveMaterial);
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        blinkRoutine = null;
     }
 
     private IEnumerator DrainRoutineMethod()
@@ -100,7 +118,7 @@ public class LightHandler : MonoBehaviour
         }
     }
 
-    private bool HasLight => lightAmount > 0;
+    private bool HasLight => !Mathf.Approximately(lightAmount, 0);
     public bool LightIsFull => lightAmount >= 1;
 
     public void StartChargingLight()
