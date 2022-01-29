@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MainCharacter_BackAnimations
+  m_Controller: {fileID: 9100000, guid: ae67f4b5db6603544a5686131b9c6915, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f8cd18f864c59224282a68606d3b6710, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9053c1705a9db7e40ae5fc317db276fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b0b6972b6a657e74e92d36f3309e3d27, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e96441285c291ab409b2f23c3a022b6a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d37b517cb4e25844abd8b1f114357557, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e1f298c86ba2c74795bc89126c07e14, type: 2}

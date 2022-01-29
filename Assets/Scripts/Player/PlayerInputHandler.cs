@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera = null;
+    [SerializeField] private List<AbstractPlayerInputListener> inputListeners = new List<AbstractPlayerInputListener>();
+
+    public event Action<PlayerInputData> OnInputChanged;
 
     private Plane _rayPlane;
     private Ray _camRay;
@@ -20,8 +24,29 @@ public class PlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         _rayPlane = new Plane(Vector3.forward, Vector3.zero);
+        BindListeners();
     }
 
+    private void OnDestroy()
+    {
+        UnbindListeners();
+    }
+
+    private void BindListeners()
+    {
+        foreach (AbstractPlayerInputListener listener in inputListeners)
+        {
+            OnInputChanged += listener.OnInputChanged;
+        }
+    }
+
+    private void UnbindListeners()
+    {
+        foreach (AbstractPlayerInputListener listener in inputListeners)
+        {
+            OnInputChanged -= listener.OnInputChanged;
+        }
+    }
     private void Update()
     {
         GetKeyboardInput();
@@ -48,6 +73,7 @@ public class PlayerInputHandler : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
 
         KeyboardInput = new Vector2(horizontalInput, verticalInput);
+        OnInputChanged?.Invoke(GetPlayerInputData());
     }
 
     private void GetMouseInput()
@@ -60,6 +86,28 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    private PlayerInputData GetPlayerInputData()
+    {
+        return new PlayerInputData()
+        {
+            movementAxis = KeyboardInput,
+            mouseClickPressed = IsMousePressed,
+            mouseWorldPosition = MouseWorldPos,
+            mouseScreenPosition = MousePosition,
+            isMoving = IsWalking
+        };
+    }
+
     public bool IsMousePressed => Input.GetMouseButton(0);
     public Vector3 MousePosition => Input.mousePosition;
+
+}
+
+public struct PlayerInputData
+{
+    public Vector3 movementAxis;
+    public Vector3 mouseWorldPosition;
+    public Vector3 mouseScreenPosition;
+    public bool mouseClickPressed;
+    public bool isMoving;
 }
