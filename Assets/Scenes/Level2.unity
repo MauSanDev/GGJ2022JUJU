@@ -3885,7 +3885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 721333800}
-  smoothness: 3
+  smoothness: 4
 --- !u!20 &690918967
 Camera:
   m_ObjectHideFlags: 0

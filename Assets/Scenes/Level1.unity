@@ -259,13 +259,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527489458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef75c003c8b794882a7f565172b6a5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 201166624}
-  smoothness: 3
+  smoothness: 4
 --- !u!20 &527489460
 Camera:
   m_ObjectHideFlags: 0
