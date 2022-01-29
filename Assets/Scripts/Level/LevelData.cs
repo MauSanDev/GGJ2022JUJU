@@ -7,6 +7,7 @@ public class LevelData : MonoBehaviour
 {
     [SerializeField] private ScriptableLevelData rawLevelData;
     [SerializeField] private PlayerInputHandler input;
+    [SerializeField] private LightHandler lightHandler;
 
     private static LevelData instance;
 
@@ -21,4 +22,5 @@ public class LevelData : MonoBehaviour
     
     public float LanternStartAmount => rawLevelData.lanternStartAmount;
     public PlayerInputHandler InputHandler => input;
+    public LightHandler LightHandler => lightHandler;
 }
