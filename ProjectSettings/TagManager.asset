@@ -44,3 +44,12 @@ TagManager:
   - name: World
     uniqueID: 1785021663
     locked: 0
+  - name: Elements
+    uniqueID: 1001227525
+    locked: 0
+  - name: Overlays
+    uniqueID: 1042762529
+    locked: 0
+  - name: OverAll
+    uniqueID: 1035524835
+    locked: 0
