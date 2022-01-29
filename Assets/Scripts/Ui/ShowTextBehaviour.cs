@@ -30,7 +30,5 @@ public class ShowTextBehaviour : MonoBehaviour
         animationJUJU.Play();
         
         yield return new WaitForSeconds(timeToWaitShowing);
-        
-        iTween.MoveTo(gameObject, startPos, 0.5f);
     }
 }
