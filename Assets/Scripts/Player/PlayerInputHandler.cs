@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerInputHandler : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerInputHandler : MonoBehaviour
     
     public Vector2 KeyboardInput { get; private set; }
     public Vector2 MouseWorldPos { get; private set; }
+    public bool IsTurnLightPressed { get; set; }
+
+    public Action OnMouseClickHoldStart;
+    public Action OnMouseClickHoldEnd;
 
     public bool IsWalking => KeyboardInput != Vector2.zero;
 
@@ -21,6 +26,20 @@ public class PlayerInputHandler : MonoBehaviour
     {
         GetKeyboardInput();
         GetMouseInput();
+        GetMouseClick();
+    }
+
+    private void GetMouseClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnMouseClickHoldStart?.Invoke();
+        }
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            OnMouseClickHoldEnd?.Invoke();
+        }
     }
 
     private void GetKeyboardInput()
