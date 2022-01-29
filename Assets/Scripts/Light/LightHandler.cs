@@ -2,13 +2,16 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LightHandler : MonoBehaviour
 {
-    [SerializeField] private float amountOfLightPerSecondToConsume;
+    [FormerlySerializedAs("amountOfLightPerSecondToConsume")] [SerializeField] private float amountOfLightToConsume = 0.15f;
+    [SerializeField] private float amountOfLightToRecharge = 0.20f;
     
     private float lightAmount;
     private Coroutine drainRoutine;
+    private Coroutine chargeLightRoutine;
     private PlayerInputHandler input;
     private void Start()
     {
@@ -25,12 +28,13 @@ public class LightHandler : MonoBehaviour
         if (drainRoutine != null)
         {
             StopCoroutine(drainRoutine);
+            drainRoutine = null;
         }
     }
 
     private void OnMouseClickStart()
     {
-        if (HasLight)
+        if (HasLight && drainRoutine == null)
         {
             drainRoutine = StartCoroutine(DrainRoutineMethod());
         }
@@ -40,7 +44,7 @@ public class LightHandler : MonoBehaviour
     {
         while (input.IsMousePressed && HasLight)
         {
-            OnDrain(lightAmount - amountOfLightPerSecondToConsume * Time.deltaTime);
+            OnDrain(lightAmount - amountOfLightToConsume * Time.deltaTime);
             yield return null;
         }
     }
@@ -70,7 +74,52 @@ public class LightHandler : MonoBehaviour
     {
         input.OnMouseClickHoldStart -= OnMouseClickStart;
         input.OnMouseClickHoldEnd -= OnMouseClickEnd;
+        
+        if (chargeLightRoutine != null)
+        {
+            StopCoroutine(chargeLightRoutine);
+        }
+        if (drainRoutine != null)
+        {
+            StopCoroutine(drainRoutine);
+        }
     }
 
     private bool HasLight => lightAmount > 0;
+    public bool LightIsFull => lightAmount >= 1;
+
+    public void StartChargingLight()
+    {
+        if (!LightIsFull && chargeLightRoutine == null)
+        {
+            chargeLightRoutine = StartCoroutine(ChargeRoutineMethod());
+        }
+    }
+    
+    private IEnumerator ChargeRoutineMethod()
+    {
+        while (!LightIsFull)
+        {
+            OnCharge(lightAmount + amountOfLightToRecharge * Time.deltaTime);
+            yield return null;
+        }
+
+        chargeLightRoutine = null;
+    }
+
+    private void OnCharge(float value)
+    {
+        value = Mathf.Clamp(value, 0, 1);
+        lightAmount = value;
+        EventsManager.DispatchEvent(EvenManagerConstants.ON_RECHARGE_LANTERN, new object[] { lightAmount });
+    }
+
+    public void StopChargingLight()
+    {
+        if (chargeLightRoutine != null)
+        {
+            StopCoroutine(chargeLightRoutine);
+            chargeLightRoutine = null;
+        }
+    }
 }
