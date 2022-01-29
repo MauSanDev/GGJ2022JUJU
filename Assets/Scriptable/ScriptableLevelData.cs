@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScriptableLevelData : ScriptableObject
 {
-    public int lanternStartAmount;
+    public float lanternStartAmount;
     
     [MenuItem("Assets/Create/LevelDataConfig")]
     public static void CreateMyAsset()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,12 +10,20 @@ public class MouseFollower : MonoBehaviour
     [SerializeField] private float moveSpeed = 0.1f;
     [FormerlySerializedAs("camera")] [SerializeField] private Camera cameraMain;
     [SerializeField] private float offset;
+    
+    
+    private PlayerInputHandler input;
 
     private Vector3 mousePosition;
 
+    private void Start()
+    {
+        input = LevelData.CurrentLevelData.InputHandler;
+    }
+
     void Update()
     {
-        Vector3 viewportMousePos = Input.mousePosition;
+        Vector3 viewportMousePos = input.MousePosition;
 
         if (viewportMousePos.x < 0)
         {

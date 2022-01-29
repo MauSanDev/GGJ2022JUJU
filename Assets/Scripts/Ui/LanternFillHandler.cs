@@ -16,7 +16,7 @@ public class LanternFillHandler : MonoBehaviour
 
     private void OnUpdateLantern(object[] parametercontainer)
     {
-        fillImage.fillAmount = Mathf.Clamp((float) parametercontainer[0] / 100 , 0f, 1f);
+        fillImage.fillAmount = Mathf.Clamp( (float)parametercontainer[0] , 0f, 1f);
     }
     
     private void OnDrainLantern(object[] parametercontainer)

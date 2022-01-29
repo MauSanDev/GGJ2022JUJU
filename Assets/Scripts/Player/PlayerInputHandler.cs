@@ -59,4 +59,7 @@ public class PlayerInputHandler : MonoBehaviour
             MouseWorldPos = _camRay.GetPoint(rayLength);
         }
     }
+
+    public bool IsMousePressed => Input.GetMouseButton(0);
+    public Vector3 MousePosition => Input.mousePosition;
 }

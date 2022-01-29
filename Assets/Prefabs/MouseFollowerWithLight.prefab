@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6070179298798297111}
   - component: {fileID: 6070179298798297110}
   m_Layer: 0
-  m_Name: MouseFollower
+  m_Name: MouseFollowerWithLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac906741d91de5149b9befa3ea7b2949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountOfLightPerSecondToConsume: 0.15
+  drainEase: 26
 --- !u!50 &6070179298949403187
 Rigidbody2D:
   serializedVersion: 4

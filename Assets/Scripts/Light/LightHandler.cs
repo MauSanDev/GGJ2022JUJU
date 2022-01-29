@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class LightHandler : MonoBehaviour
 {
-    [SerializeField] private int amountOfLightPerSecondToConsume;
-    [SerializeField] private iTween.EaseType drainEase = iTween.EaseType.easeInBack;
+    [SerializeField] private float amountOfLightPerSecondToConsume;
     
-    private int lightAmount;
-    private bool isDraining;
+    private float lightAmount;
     private Coroutine drainRoutine;
     private PlayerInputHandler input;
     private void Start()
@@ -34,27 +32,23 @@ public class LightHandler : MonoBehaviour
     {
         if (HasLight)
         {
-            isDraining = true;
             drainRoutine = StartCoroutine(DrainRoutineMethod());
         }
     }
 
     private IEnumerator DrainRoutineMethod()
     {
-        if (!isDraining)
+        while (input.IsMousePressed && HasLight)
         {
+            OnDrain(lightAmount - amountOfLightPerSecondToConsume * Time.deltaTime);
             yield return null;
         }
-        
-        Hashtable hashtable =  iTween.Hash("from",lightAmount,"to", lightAmount - amountOfLightPerSecondToConsume,"time", 1,"onupdate",nameof(OnDrain), "easetype", drainEase);
-        iTween.ValueTo(gameObject, hashtable);
-        yield return new WaitForSeconds(1);
     }
 
     private void OnDrain(float value)
     {
-        value = Mathf.Clamp(value, 0, 100);
-        lightAmount = (int)value;
+        value = Mathf.Clamp(value, 0, 1);
+        lightAmount = value;
         EventsManager.DispatchEvent(EvenManagerConstants.ON_DRAIN_LANTERN, new object[] { lightAmount });
     }
 

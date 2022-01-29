@@ -19,6 +19,6 @@ public class LevelData : MonoBehaviour
     public static LevelData CurrentLevelData => instance;
     
     
-    public int LanternStartAmount => rawLevelData.lanternStartAmount;
+    public float LanternStartAmount => rawLevelData.lanternStartAmount;
     public PlayerInputHandler InputHandler => input;
 }
