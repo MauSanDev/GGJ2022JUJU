@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3545213063904394153}
   - component: {fileID: 3545213063904394154}
+  - component: {fileID: 7744359357866451113}
   m_Layer: 0
   m_Name: Monster_TheHaunted
   m_TagString: Untagged
@@ -51,6 +52,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7744359357866451113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce55960a78067a4db60ad2811a94926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3545213063904394154}
+  invertAxis: 0
 --- !u!1001 &3545213065671586292
 PrefabInstance:
   m_ObjectHideFlags: 0
