@@ -118,9 +118,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - parentTransform: {fileID: 0}
     name: Buzz_1
-    clip: {fileID: 8300000, guid: cf2fc48d706b94894ab854363c8ad087, type: 3}
+    clip: {fileID: 8300000, guid: f1c8f99eb4e544dfcb9aea5b55325e6c, type: 3}
     timeToStart: 0
-    volume: 0.35
+    volume: 0.25
     pitch: 1
     loop: 1
     spatialBlend: 0.5
@@ -158,6 +158,18 @@ MonoBehaviour:
     timeToStart: 0
     volume: 0.25
     pitch: 0.3
+    loop: 0
+    spatialBlend: 0.5
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: DoorUnlocked
+    clip: {fileID: 8300000, guid: e4b7c23a0dc5d44b09f38a4d7c80c1cf, type: 3}
+    timeToStart: 0
+    volume: 0.2
+    pitch: 0.8
     loop: 0
     spatialBlend: 0.5
     minDistance: 0

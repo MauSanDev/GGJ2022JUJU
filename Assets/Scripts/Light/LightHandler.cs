@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -36,6 +34,7 @@ public class LightHandler : MonoBehaviour
             drainRoutine = null;
             EventsManager.DispatchEvent(EvenManagerConstants.ON_DRAIN_STOP, new object[] { lightAmount });
             AssignMaterial(onInactiveMaterial);
+            AudioManager.Instance.StopSound("Buzz_1");
         }
     }
 
@@ -53,10 +52,12 @@ public class LightHandler : MonoBehaviour
         {
             drainRoutine = StartCoroutine(DrainRoutineMethod());
             AssignMaterial(onActiveMaterial);
+            AudioManager.Instance.PlaySound("Buzz_1");
         }
         else
         {
             blinkRoutine = StartCoroutine(BlinkRoutine());
+            AudioManager.Instance.PlaySound("Switch_1");
         }
     }
 
@@ -91,6 +92,13 @@ public class LightHandler : MonoBehaviour
     {
         value = Mathf.Clamp(value, 0, 1);
         lightAmount = value;
+
+        if (value <= 0)
+        {
+            AudioManager.Instance.StopSound("Buzz_1");
+            AudioManager.Instance.PlaySound("Switch_2");
+        }
+        
         EventsManager.DispatchEvent(EvenManagerConstants.ON_DRAIN_LANTERN, new object[] { lightAmount });
     }
 
@@ -131,6 +139,7 @@ public class LightHandler : MonoBehaviour
         if (!LightIsFull && chargeLightRoutine == null)
         {
             chargeLightRoutine = StartCoroutine(ChargeRoutineMethod());
+            AudioManager.Instance.PlaySound("ChargeUp");
         }
     }
     
@@ -149,6 +158,12 @@ public class LightHandler : MonoBehaviour
     {
         value = Mathf.Clamp(value, 0, 1);
         lightAmount = value;
+
+        if (value >= 1)
+        {
+            AudioManager.Instance.StopSound("ChargeUp");
+        }
+        
         EventsManager.DispatchEvent(EvenManagerConstants.ON_RECHARGE_LANTERN, new object[] { lightAmount });
     }
 
@@ -158,6 +173,7 @@ public class LightHandler : MonoBehaviour
         {
             StopCoroutine(chargeLightRoutine);
             chargeLightRoutine = null;
+            AudioManager.Instance.StopSound("ChargeUp");
         }
     }
 }

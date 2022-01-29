@@ -27,6 +27,7 @@ public class LevelLoop : MonoBehaviour
     private void OnLevelComplete(object[] parametercontainer)
     {
         SceneManager.LoadScene(nextLevelName);
+        AudioManager.Instance.PlaySound("DoorUnlocked");
     }
 
     public void ResetCurrentLevel()
