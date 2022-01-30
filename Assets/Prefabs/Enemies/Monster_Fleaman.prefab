@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1484885723}
   - component: {fileID: 1484885724}
   - component: {fileID: 1484885722}
-  - component: {fileID: 1484885728}
   - component: {fileID: -8053836967557623762}
   - component: {fileID: 8464417820190337578}
   m_Layer: 0
@@ -130,26 +129,8 @@ MonoBehaviour:
   illuminatedBehavior: {fileID: 8464417820190337578}
   proximityTrigger: {fileID: 0}
   enemyFaceSprite: {fileID: 6219325977405298510, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
+  stopLightBehaviorOnExit: 0
   isIlluminated: 0
---- !u!114 &1484885728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8366410194070173812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac906741d91de5149b9befa3ea7b2949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountOfLightToConsume: 0.15
-  amountOfLightToRecharge: 0.2
-  onInactiveMaterial: {fileID: 0}
-  onActiveMaterial: {fileID: 0}
-  spriteRenderers: []
-  portal: {fileID: 0}
-  collider: {fileID: 0}
 --- !u!114 &-8053836967557623762
 MonoBehaviour:
   m_ObjectHideFlags: 0

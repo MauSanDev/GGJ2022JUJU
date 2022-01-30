@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -13,6 +14,10 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private SpriteRenderer enabledSprite;
     [SerializeField] private SpriteRenderer disabledSprite;
 
+    
+    [Header("GameObjects")] 
+    [SerializeField] private GameObject enabledGO;
+    
     private bool wasInteracted = false;
 
     private enum InteractionType
@@ -90,6 +95,11 @@ public class InteractableObject : MonoBehaviour
                 interactionAction.OnPlayerTrigger(other);
                 wasInteracted = true;
                 CheckInteractionSprites();
+
+                if (enabledGO != null)
+                {
+                    enabledGO.SetActive(true);
+                }
             }
         }
     }
@@ -102,6 +112,11 @@ public class InteractableObject : MonoBehaviour
                 interactionAction.OnPlayerTriggerExit(other);
                 wasInteracted = true;
                 CheckInteractionSprites();
+                 
+                if (enabledGO != null)
+                {
+                    enabledGO.SetActive(false);
+                }
             }
         }
     }
