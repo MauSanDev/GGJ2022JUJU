@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, ILighteable
@@ -14,6 +15,8 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     [SerializeField] private bool multiplySpeed;
     [SerializeField] private float multiplierSpeed;
 
+    [SerializeField] private AbstractMovementListener[] movementListeners;
+
     private Rigidbody2D rb = null;
     private const string target = "Player";
     private Transform player;
@@ -22,6 +25,11 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     public bool isIlluminated;
     private Vector2 initialPosition;
     private bool staticEnemy;
+    
+    //runaway
+    private bool isRunningAway = false;
+    [SerializeField] private float runawayTime = 3f;
+    private float runawayTimer = 0f;
 
     private void Start()
     {
@@ -39,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
 
     private void Behave()
     {
-        if (isIlluminated)
+        if (isIlluminated && !isRunningAway)
         {
             IlluminatedBehaviour();
         }
@@ -51,12 +59,33 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
 
     private Transform Target => hasToPatrol ? waypointsComponent.GetWaypointPosition(transform) : player;
 
+    private void UpdateMovementListeners(Vector3 movement)
+    {
+        foreach (var listener in movementListeners)
+        {
+            listener.OnMovementChanged(movement);
+        }
+    }
+
+    private void Update()
+    {
+        if (isRunningAway)
+        {
+            runawayTimer += Time.deltaTime;
+
+            if (runawayTimer > runawayTime)
+            {
+                runawayTimer = 0f;
+                isRunningAway = false;
+            }
+        }
+    }
+
     private void IlluminatedBehaviour()
     {
         if (runAway)
         {
-            RunAway();
-            Rotate(player);
+            isRunningAway = true;
         }
         else
         {
@@ -67,7 +96,12 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
 
     private void InitialBehaviour()
     {
-        if (followPlayer || hasToPatrol)
+        if (isRunningAway)
+        {
+            RunAway();
+            Rotate(player);
+        }
+        else if (followPlayer || hasToPatrol)
         {
             MoveToTarget(Target.position);
             Rotate(Target);
@@ -88,7 +122,7 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
         }
     }
     
-    private float Speed => isIlluminated &&  multiplySpeed ? (speed * multiplierSpeed) : speed;
+    private float Speed => isIlluminated &&  multiplySpeed ? (speed * multiplierSpeed * Time.deltaTime) : speed;
 
     private bool ReachPlayer
     {
@@ -106,7 +140,9 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
             Vector2 direction = (Vector2)target - rb.position;
             direction.Normalize();
             Vector2 vector = direction * Speed;
-            rb.MovePosition(rb.position + vector * Time.fixedDeltaTime);
+            Vector3 finalPos = rb.position + vector * Time.deltaTime;
+            rb.MovePosition(finalPos);
+            UpdateMovementListeners(finalPos);
         }
     }
 
@@ -126,7 +162,9 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
         Vector2 direction = (Vector2)player.position - rb.position;
         direction.Normalize();
         Vector2 vector = direction * -Speed;
-        rb.MovePosition(rb.position + vector * Time.deltaTime);
+        Vector3 finalPos = rb.position + vector ;
+        rb.MovePosition(finalPos);
+        UpdateMovementListeners(finalPos);
     }
 
     public void OnLightEnter()

@@ -20,8 +20,11 @@ public class LightHandler : MonoBehaviour
     {
         lightAmount = LevelData.CurrentLevelData.LanternStartAmount;
         input = LevelData.CurrentLevelData.InputHandler;
-        
-        portal.EnableParticles(false);
+
+        if (portal != null)
+        {
+            portal.EnableParticles(false);
+        }
         
         AssignMaterial(onInactiveMaterial);
         input.OnMouseClickHoldStart += OnMouseClickStart;
@@ -109,6 +112,10 @@ public class LightHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!input.IsMousePressed)
+        {
+            return;
+        }
         ILighteable lighteable = other.GetComponent<ILighteable>();
         
         lighteable?.OnLightEnter();
@@ -116,6 +123,10 @@ public class LightHandler : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (input.IsMousePressed)
+        {
+            return;
+        }
         ILighteable lighteable = other.GetComponent<ILighteable>();
         
         lighteable?.OnLightExit();

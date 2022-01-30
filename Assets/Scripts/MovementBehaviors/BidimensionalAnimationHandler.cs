@@ -17,12 +17,12 @@ public class BidimensionalAnimationHandler : AbstractMovementListener
         invertedX = -originalX;
     }
 
-    public override void OnMovementChanged(Vector3 movementAxis)
+    public override void OnMovementChanged(Vector3 target)
     {
-        isMoving = !Mathf.Approximately(movementAxis.x, 0) || !Mathf.Approximately(movementAxis.x, 0);
+        isMoving = !Mathf.Approximately(target.x, 0) || !Mathf.Approximately(target.x, 0);
         animator.SetBool(ANIM_IS_MOVING, isMoving);
         
-        transform.localScale = new Vector3(movementAxis.x > 0 ? originalX : invertedX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(target.x > transform.position.x ? originalX : invertedX, transform.localScale.y, transform.localScale.z);
     }
 
 }
