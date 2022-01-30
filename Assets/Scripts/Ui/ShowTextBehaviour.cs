@@ -13,7 +13,8 @@ public class ShowTextBehaviour : MonoBehaviour
     [SerializeField] private float timeToWaitShowing = 5;
     [SerializeField] private Animation animationJUJU;
 
-    private Vector3 startPos;
+
+    private Queue<string> textsToShow = new Queue<string>();
 
     private void Awake()
     {
@@ -30,26 +31,26 @@ public class ShowTextBehaviour : MonoBehaviour
     
     public void ShowText(string textToShow)
     {
-        if (textRoutine != null)
-        {
-            StopCoroutine(textRoutine);
-        }
+        textsToShow.Enqueue(textToShow);
         
-        startPos = transform.position;
-        if (!string.IsNullOrEmpty(textToShow))
+        if (!string.IsNullOrEmpty(textToShow) && textRoutine == null)
         {
-            textRoutine = StartCoroutine(ShowTextRoutine(textToShow));
+            textRoutine = StartCoroutine(ShowTextRoutine());
         }
     }
 
-    private IEnumerator ShowTextRoutine(string tutorialText)
+    private IEnumerator ShowTextRoutine()
     {
-        text.text = tutorialText;
-        yield return new WaitForSeconds(timeToWaitBeforeShowing);
+        while (textsToShow.Count > 0)
+        {
+            string textToShow = textsToShow.Dequeue();
+            text.text = textToShow;
+            yield return new WaitForSeconds(timeToWaitBeforeShowing);
 
-        animationJUJU.Play();
+            animationJUJU.Play();
         
-        yield return new WaitForSeconds(timeToWaitShowing);
+            yield return new WaitForSeconds(timeToWaitShowing);
+        }
         textRoutine = null;
     }
 }
