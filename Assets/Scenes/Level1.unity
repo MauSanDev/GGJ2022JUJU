@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5978344984275206080, guid: be0048ff90769374aaf3d7771384605e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978344984275206080, guid: be0048ff90769374aaf3d7771384605e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.593
+      objectReference: {fileID: 0}
     - target: {fileID: 6010795893091339001, guid: be0048ff90769374aaf3d7771384605e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -223,6 +231,10 @@ PrefabInstance:
       value: InGameCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 6010795893888731249, guid: be0048ff90769374aaf3d7771384605e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592567879550805707, guid: be0048ff90769374aaf3d7771384605e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3277,6 +3289,10 @@ PrefabInstance:
     - target: {fileID: 847473057440357067, guid: aa8a99f76b80d01488e71f3dc7262808, type: 3}
       propertyPath: m_Name
       value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921799667191136649, guid: aa8a99f76b80d01488e71f3dc7262808, type: 3}
+      propertyPath: isEnabledToInteract
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa8a99f76b80d01488e71f3dc7262808, type: 3}
