@@ -11,24 +11,27 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     [SerializeField] private float speed;
     [Header("When is illuminated")]
     [SerializeField] private bool runAway;
-    [SerializeField] private bool increaseSpeedWhenFollowPlayer;
+    [SerializeField] private bool multiplySpeed;
     [SerializeField] private float multiplierSpeed;
-    
-    
-    
+
     private Rigidbody2D rb = null;
     private const string target = "Player";
     private Transform player;
     private Vector2 movement;
     private bool hasToPatrol;
     public bool isIlluminated;
-    
+    private Vector2 initialPosition;
+    private bool staticEnemy;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag(target).transform;
         hasToPatrol = waypointsComponent != null;
+        initialPosition = transform.position;
+        staticEnemy = !hasToPatrol && !followPlayer;
     }
+
     private void FixedUpdate()
     {
         Behave();
@@ -47,7 +50,6 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     }
 
     private Transform Target => hasToPatrol ? waypointsComponent.GetWaypointPosition(transform) : player;
-    private float Speed => isIlluminated &&  increaseSpeedWhenFollowPlayer ? (speed * multiplierSpeed) : speed;
 
     private void IlluminatedBehaviour()
     {
@@ -58,7 +60,7 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
         }
         else
         {
-            MoveToTarget(player);
+            MoveToTarget(player.position);
             Rotate(player);
         }
     }
@@ -67,17 +69,45 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     {
         if (followPlayer || hasToPatrol)
         {
-            MoveToTarget(Target);
+            MoveToTarget(Target.position);
             Rotate(Target);
+        }
+
+        if (staticEnemy)
+        {
+            StaticEnemyBehaviour();
         }
     }
 
-    private void MoveToTarget(Transform target)
+    private void StaticEnemyBehaviour()
+    { 
+        float distance = Vector2.Distance(initialPosition, transform.position);
+        if (distance > 0.5f)
+        {
+            MoveToTarget(initialPosition);
+        }
+    }
+    
+    private float Speed => isIlluminated &&  multiplySpeed ? (speed * multiplierSpeed) : speed;
+
+    private bool ReachPlayer
     {
-        Vector2 direction = (Vector2)target.position - rb.position;
-        direction.Normalize();
-        Vector2 vector = direction * Speed;
-        rb.MovePosition(rb.position + vector * Time.fixedDeltaTime);
+        get
+        {
+            float distance = Vector2.Distance (player.position, transform.position);
+            return distance < 0.5f;
+        }
+    }
+    
+    private void MoveToTarget(Vector2 target)
+    {
+        if (!ReachPlayer)
+        {
+            Vector2 direction = (Vector2)target - rb.position;
+            direction.Normalize();
+            Vector2 vector = direction * Speed;
+            rb.MovePosition(rb.position + vector * Time.fixedDeltaTime);
+        }
     }
 
     private void Rotate(Transform target)
