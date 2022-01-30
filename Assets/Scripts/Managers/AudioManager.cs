@@ -29,7 +29,6 @@ public class AudioManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Application.ExternalEval("window.focus();");
         InstantiateAudioSources();
         PlaySound("SoftCreepyWind");
         PlaySound("MusicPattern_2");
@@ -129,7 +128,7 @@ public class AudioManager : MonoBehaviour
         if (scene.name.Equals("LightLevel"))
         {
             StopSound("MusicPattern_2");
-            PlaySound("BirdsChirping");
+            PlaySound("BirdsChirping", true);
         }
     }
     
