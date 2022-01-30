@@ -130,8 +130,11 @@ public class LightHandler : MonoBehaviour
 
     private void OnDestroy()
     {
-        input.OnMouseClickHoldStart -= OnMouseClickStart;
-        input.OnMouseClickHoldEnd -= OnMouseClickEnd;
+        if (input != null)
+        {
+            input.OnMouseClickHoldStart -= OnMouseClickStart;
+            input.OnMouseClickHoldEnd -= OnMouseClickEnd;
+        }
         
         if (chargeLightRoutine != null)
         {

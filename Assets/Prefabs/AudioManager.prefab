@@ -224,3 +224,15 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: BloodEffect
+    clip: {fileID: 8300000, guid: 075db247ad7a7074c965cde1f31fee59, type: 3}
+    timeToStart: 0
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
