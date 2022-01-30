@@ -260,3 +260,15 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: Note
+    clip: {fileID: 8300000, guid: 5a0dd592eeacc493db7a9acb45cc7ec2, type: 3}
+    timeToStart: 0
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}

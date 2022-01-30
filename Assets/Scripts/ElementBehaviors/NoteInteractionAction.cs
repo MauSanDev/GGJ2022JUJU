@@ -16,6 +16,7 @@ public class NoteInteractionAction : AbstractInteractionAction
         wasCollected = true;
         ShowTextBehaviour.Instance.ShowText(loreNote.note);
         LevelData.NotesCollected++;
+        AudioManager.Instance.PlaySound("Note");
     }
 
     private void OnDestroy()
