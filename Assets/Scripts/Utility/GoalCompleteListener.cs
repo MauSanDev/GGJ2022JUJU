@@ -19,7 +19,7 @@ public class GoalCompleteListener : MonoBehaviour
 
     private void OnGoalsDismiss(params object[] param)
     {
-        objToInteract.AllowInteraction();
+        objToInteract.BanInteraction();
 
         //Play a noise?
     }
