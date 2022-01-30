@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1064342263}
   - component: {fileID: 1064342261}
   - component: {fileID: 1064342262}
+  - component: {fileID: -2454123897760190386}
   m_Layer: 0
   m_Name: Monster_TheHaunted
   m_TagString: Untagged
@@ -125,8 +126,9 @@ MonoBehaviour:
     m_Bits: 64
   initialBehavior: {fileID: 0}
   proximityBehavior: {fileID: 0}
-  illuminatedBehavior: {fileID: 0}
+  illuminatedBehavior: {fileID: -2454123897760190386}
   proximityTrigger: {fileID: 0}
+  enemyFaceSprite: {fileID: -3192609730917079411, guid: 245908736523d0944a608f5349dca815, type: 3}
   isIlluminated: 0
 --- !u!114 &1064342262
 MonoBehaviour:
@@ -147,6 +149,21 @@ MonoBehaviour:
   spriteRenderers: []
   portal: {fileID: 0}
   collider: {fileID: 0}
+--- !u!114 &-2454123897760190386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f368b825b6ba454cb196c30c240daa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementListeners:
+  - {fileID: 7744359357866451113}
+  movementSpeed: 3
 --- !u!1001 &3545213065671586292
 PrefabInstance:
   m_ObjectHideFlags: 0

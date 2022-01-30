@@ -11,7 +11,10 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     [SerializeField] private AbstractEnemyBehavior proximityBehavior;
     [SerializeField] private AbstractEnemyBehavior illuminatedBehavior;
     [SerializeField] private TriggerListener proximityTrigger;
+    [SerializeField] private Sprite enemyFaceSprite;
 
+    [SerializeField] private bool stopLightBehaviorOnExit = false;
+    
     private Vector2 movement;
     public bool isIlluminated;
     private Vector2 initialPosition;
@@ -86,6 +89,11 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
 
     public void OnLightExit()
     {
+        if (stopLightBehaviorOnExit)
+        {
+            StopBehavior(illuminatedBehavior);
+        }
+        
         isIlluminated = false;
     }
     
@@ -111,7 +119,7 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
         {
             PlayerInputHandler controller = other.gameObject.GetComponent<PlayerInputHandler>();
             controller.enabled = false;
-            LoseScreenHandler.Instance.ShowLooseScreen();
+            LoseScreenHandler.Instance.ShowLooseScreen(enemyFaceSprite);
         }
     }
 }
