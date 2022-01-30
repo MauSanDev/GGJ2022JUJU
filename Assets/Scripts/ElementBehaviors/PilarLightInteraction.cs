@@ -6,5 +6,6 @@ public class PilarLightInteraction : AbstractLightInteraction
     {
         ShowTextBehaviour.Instance.ShowText("You activated a Pilar");
         LevelData.CurrentLevelData.CurrentGoals.lightsOn++;
+        AudioManager.Instance.PlaySound("TorchOn");
     }
 }

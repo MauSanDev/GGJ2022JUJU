@@ -188,3 +188,27 @@ MonoBehaviour:
     timeToFadeIn: 3
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: ChestOpen
+    clip: {fileID: 8300000, guid: 3eb68a16143a6410aa1510a0e60cf147, type: 3}
+    timeToStart: 0
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: TorchOn
+    clip: {fileID: 8300000, guid: a69e656b95cea4932b689c153eab88da, type: 3}
+    timeToStart: 0
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
