@@ -108,6 +108,10 @@ public class LevelGoalChecker
         {
             EventsManager.DispatchEvent(EvenManagerConstants.ON_GOALS_ACHIEVED);
         }
+        else
+        {
+            EventsManager.DispatchEvent(EvenManagerConstants.ON_GOALS_DISMISS);
+        }
         
     }
     

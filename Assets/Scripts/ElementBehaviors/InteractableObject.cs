@@ -47,6 +47,12 @@ public class InteractableObject : MonoBehaviour
         CheckInteractionSprites();
     }
 
+    public void BanInteraction()
+    {
+        isEnabledToInteract = false;
+        CheckInteractionSprites();
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(IsAllowedLayer(other.gameObject))
