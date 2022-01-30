@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Application.ExternalEval("window.focus();");
         InstantiateAudioSources();
         PlaySound("SoftCreepyWind");
         PlaySound("MusicPattern_2");
