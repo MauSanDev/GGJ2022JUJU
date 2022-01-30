@@ -90,7 +90,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6070179298949403209}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -113,10 +113,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfLightToConsume: 0.15
   amountOfLightToRecharge: 0.2
-  onInactiveMaterial: {fileID: 0}
-  onActiveMaterial: {fileID: 0}
-  spriteRenderers: []
+  onInactiveMaterial: {fileID: 2100000, guid: 558cd20682d67e74fa596d4828b1f609, type: 2}
+  onActiveMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  spriteRenderers:
+  - {fileID: 2809967054161103620}
+  - {fileID: 2809967054118901968}
   portal: {fileID: 2627136925163140749}
+  collider: {fileID: 6070179298949403215}
 --- !u!50 &6070179298949403187
 Rigidbody2D:
   serializedVersion: 4
@@ -344,6 +347,18 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 8269340969950141522, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269340969950141522, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269340969950141522, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1035524835
+      objectReference: {fileID: 0}
     - target: {fileID: 8269340970058403717, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -351,6 +366,18 @@ PrefabInstance:
     - target: {fileID: 8269340970058403717, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269340970058403718, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269340970058403718, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269340970058403718, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1035524835
       objectReference: {fileID: 0}
     - target: {fileID: 8269340970058403719, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
       propertyPath: rotationSpeed
@@ -361,5 +388,15 @@ PrefabInstance:
 --- !u!4 &2809967054713939248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8269340969462329958, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+  m_PrefabInstance: {fileID: 6070179299902920534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2809967054161103620 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8269340969950141522, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
+  m_PrefabInstance: {fileID: 6070179299902920534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2809967054118901968 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8269340970058403718, guid: 80627bd77f6af7840be2a835d42d8ee8, type: 3}
   m_PrefabInstance: {fileID: 6070179299902920534}
   m_PrefabAsset: {fileID: 0}

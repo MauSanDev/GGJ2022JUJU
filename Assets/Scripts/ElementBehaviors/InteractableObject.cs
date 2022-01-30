@@ -1,18 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 [RequireComponent(typeof(Collider2D))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private AbstractInteractionAction interactionAction;
     [SerializeField] private bool singleInteraction = true;
-    
     [SerializeField] private bool isEnabledToInteract = false;
-
     [SerializeField] private InteractionType interactionType;
+    [SerializeField] private LayerMask allowedLayer;
 
     [Header("Sprites")] 
     [SerializeField] private SpriteRenderer enabledSprite;
@@ -54,20 +49,54 @@ public class InteractableObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (interactionType == InteractionType.Collision && CanInteract)
+        if(IsAllowedLayer(other.gameObject))
         {
-            interactionAction.OnPlayerCollide(other);
-            wasInteracted = true;
-            CheckInteractionSprites();
+            if (interactionType == InteractionType.Collision && CanInteract)
+            {
+                interactionAction.OnPlayerCollide(other);
+                wasInteracted = true;
+                CheckInteractionSprites();
+            }
         }
     }
+
+    private bool IsAllowedLayer(GameObject obj) => allowedLayer == (allowedLayer | (1 << obj.layer));
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if(IsAllowedLayer(other.gameObject))
+        {
+            if (interactionType == InteractionType.Collision && CanInteract)
+            {
+                interactionAction.OnPlayerCollideExit(other);
+                wasInteracted = true;
+                CheckInteractionSprites();
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (interactionType == InteractionType.Trigger && CanInteract)
+        if(IsAllowedLayer(other.gameObject))
         {
-            interactionAction.OnPlayerTrigger(other);
-            wasInteracted = true;
-            CheckInteractionSprites();
+            if (interactionType == InteractionType.Trigger && CanInteract)
+            {
+                interactionAction.OnPlayerTrigger(other);
+                wasInteracted = true;
+                CheckInteractionSprites();
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(IsAllowedLayer(other.gameObject))
+        {
+            if (interactionType == InteractionType.Trigger && CanInteract)
+            {
+                interactionAction.OnPlayerTriggerExit(other);
+                wasInteracted = true;
+                CheckInteractionSprites();
+            }
         }
     }
 }
