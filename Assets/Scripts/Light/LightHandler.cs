@@ -9,6 +9,7 @@ public class LightHandler : MonoBehaviour
     [SerializeField] private Material onInactiveMaterial = null;
     [SerializeField] private Material onActiveMaterial = null;
     [SerializeField] private SpriteRenderer[] spriteRenderers = null;
+    [SerializeField] private PortalBehaviour portal = null;
     
     private float lightAmount;
     private Coroutine drainRoutine;
@@ -19,6 +20,8 @@ public class LightHandler : MonoBehaviour
     {
         lightAmount = LevelData.CurrentLevelData.LanternStartAmount;
         input = LevelData.CurrentLevelData.InputHandler;
+        
+        portal.EnableParticles(false);
         
         AssignMaterial(onInactiveMaterial);
         input.OnMouseClickHoldStart += OnMouseClickStart;
@@ -35,6 +38,7 @@ public class LightHandler : MonoBehaviour
             EventsManager.DispatchEvent(EvenManagerConstants.ON_DRAIN_STOP, new object[] { lightAmount });
             AssignMaterial(onInactiveMaterial);
             AudioManager.Instance.StopSound("Buzz_1");
+            portal.EnableParticles(false);
         }
     }
 
@@ -53,6 +57,7 @@ public class LightHandler : MonoBehaviour
             drainRoutine = StartCoroutine(DrainRoutineMethod());
             AssignMaterial(onActiveMaterial);
             AudioManager.Instance.PlaySound("Buzz_1");
+            portal.EnableParticles(true);
         }
         else
         {

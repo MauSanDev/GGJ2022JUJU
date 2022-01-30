@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Level2Data
   m_EditorClassIdentifier: 
   lanternStartAmount: 0
+  tutorialText: Recharge your energy and find hiden pathways
+  delayToShow: 1
