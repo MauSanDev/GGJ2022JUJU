@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d934a0d51da3564f8ba9d1d413a316a, type: 3}
   m_Name: EndgameNote
   m_EditorClassIdentifier: 
-  note: Don't play with powers that are bigger than you.
+  note: This is the end. Don't play with powers that are bigger than you.
