@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df2b8e7f0da4ee41b429335dc0591b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loreNote: {fileID: 11400000, guid: 06f6c49386102dc4b8d993c4bf8604d7, type: 2}

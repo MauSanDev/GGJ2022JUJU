@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d934a0d51da3564f8ba9d1d413a316a, type: 3}
-  m_Name: Lv1Note
+  m_Script: {fileID: 11500000, guid: ae5c5a112f5a7444390b6e7248cc8798, type: 3}
+  m_Name: Level3Goals
   m_EditorClassIdentifier: 
-  note: Se quedaron todos dormidos loco nadie quiere laburar
+  lanternStartAmount: 0
+  tutorialText: Recharge your energy and find hiden pathways
+  delayToShow: 1

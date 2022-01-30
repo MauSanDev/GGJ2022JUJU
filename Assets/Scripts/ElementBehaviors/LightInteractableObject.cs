@@ -42,14 +42,18 @@ public class LightInteractableObject : MonoBehaviour, ILighteable
 
     public void OnLightEnter()
     {
-        interactionAction.OnLightStart();
-        wasInteracted = true;
-        CheckInteractionSprites();
+        if (CanInteract)
+        {
+            interactionAction.OnLightStart();
+            wasInteracted = true;
+            CheckInteractionSprites();
+        }
+        
     }
 
     public void OnLightExit()
     {
-        interactionAction.OnLightStart();
+        interactionAction.OnLightEnd();
         CheckInteractionSprites();
     }
 }

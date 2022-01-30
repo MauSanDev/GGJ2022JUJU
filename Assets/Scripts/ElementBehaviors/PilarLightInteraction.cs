@@ -1,10 +1,8 @@
-using UnityEngine;
-
 public class PilarLightInteraction : AbstractLightInteraction
 {
-    public virtual void OnLightStart()
+    public override void OnLightStart()
     {
         ShowTextBehaviour.Instance.ShowText("You activated a Pilar");
-        LevelData.CurrentLevelData.CurrentGoals.lightsOn++;
+        LevelData.CurrentLevelData.LevelGoalChecker.RegisterPillar();
     }
 }
