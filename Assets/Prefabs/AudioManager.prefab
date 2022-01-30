@@ -51,7 +51,7 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     loop: 0
-    spatialBlend: 0.5
+    spatialBlend: 0
     minDistance: 0
     timeToFadeIn: 0
     timeToFadeOut: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     loop: 0
-    spatialBlend: 0.5
+    spatialBlend: 0
     minDistance: 0
     timeToFadeIn: 0
     timeToFadeOut: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     loop: 0
-    spatialBlend: 0.5
+    spatialBlend: 0
     minDistance: 0
     timeToFadeIn: 0
     timeToFadeOut: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     loop: 0
-    spatialBlend: 0.5
+    spatialBlend: 0
     minDistance: 0
     timeToFadeIn: 0
     timeToFadeOut: 0
