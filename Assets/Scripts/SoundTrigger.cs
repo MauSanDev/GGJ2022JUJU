@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class SoundTrigger : MonoBehaviour
 {
-    [SerializeField] private string soundToPlay = "";
+    [SerializeField] private string[] soundsToPlay;
 
     public void PlaySound()
     {
-        AudioManager.Instance.PlaySound(soundToPlay);
+        foreach (string sound in soundsToPlay)
+        {
+            AudioManager.Instance.PlaySound(sound);    
+        }
     }
 }
