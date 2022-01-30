@@ -184,8 +184,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  movementListeners:
-  - {fileID: 473917578564079387}
   initialBehavior: {fileID: 0}
   proximityBehavior: {fileID: 1680299429}
   illuminatedBehavior: {fileID: 0}
@@ -203,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f368b825b6ba454cb196c30c240daa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementListeners:
+  - {fileID: 473917578564079387}
   movementSpeed: 2
 --- !u!1001 &4184277472701757279
 PrefabInstance:

@@ -5,6 +5,7 @@ public class RunAwayEnemyBehavior : AbstractEnemyBehavior
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float runawayTime = 3f;
     private float runawayTimer = 0f;
+    
 
     protected override void OnBehaviorStart()
     {
@@ -25,5 +26,6 @@ public class RunAwayEnemyBehavior : AbstractEnemyBehavior
         Vector2 vector = direction * -movementSpeed;
         Vector3 finalPos = rigidBody.position + vector * Time.deltaTime ;
         rigidBody.MovePosition(finalPos);
+        UpdateMovementListeners(finalPos);
     }
 }

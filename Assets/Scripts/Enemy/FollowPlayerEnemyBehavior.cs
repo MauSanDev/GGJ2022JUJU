@@ -26,6 +26,7 @@ public class FollowPlayerEnemyBehavior : AbstractEnemyBehavior
             Vector2 vector = direction * movementSpeed;
             Vector3 finalPos = rigidBody.position + vector * Time.deltaTime;
             rigidBody.MovePosition(finalPos);
+            UpdateMovementListeners(finalPos);
         }
     }
 }

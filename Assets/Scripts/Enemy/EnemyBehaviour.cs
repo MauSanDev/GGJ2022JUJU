@@ -5,8 +5,6 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
 {
     [SerializeField] private EnemyWaypoints waypointsComponent;
     [SerializeField] private LayerMask playerLayer;
-    
-    [SerializeField] private AbstractMovementListener[] movementListeners;
 
     [Header("Behaviors")] 
     [SerializeField] private AbstractEnemyBehavior initialBehavior;
@@ -75,14 +73,6 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
         }
     }
 
-    private void UpdateMovementListeners(Vector3 movement)
-    {
-        foreach (var listener in movementListeners)
-        {
-            listener.OnMovementChanged(movement);
-        }
-    }
-
     public void OnLightEnter()
     {
         if (illuminatedBehavior != null)
@@ -122,6 +112,18 @@ public abstract class AbstractEnemyBehavior : MonoBehaviour
     
     protected Rigidbody2D rigidBody = null;
     protected Transform player;
+    
+    
+    [SerializeField] private AbstractMovementListener[] movementListeners;
+    
+
+    protected void UpdateMovementListeners(Vector3 movement)
+    {
+        foreach (var listener in movementListeners)
+        {
+            listener.OnMovementChanged(movement);
+        }
+    }
     
     private void Awake()
     {
