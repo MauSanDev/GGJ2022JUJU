@@ -27,7 +27,6 @@ public class AudioManager : MonoBehaviour
         InstantiateAudioSources();
         PlaySound("SoftCreepyWind");
         PlaySound("MusicPattern_2");
-        PlaySound("Flame");
     }
 
     private void InstantiateAudioSources()
