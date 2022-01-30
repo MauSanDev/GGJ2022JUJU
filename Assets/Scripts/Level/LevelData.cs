@@ -16,7 +16,11 @@ public class LevelData : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LevelGoalChecker = new LevelGoalChecker(rawLevelData.levelGoals);
+        
+        if (rawLevelData != null && rawLevelData.levelGoals != null)
+        {
+            LevelGoalChecker = new LevelGoalChecker(rawLevelData.levelGoals);
+        }
     }
 
     public LevelGoalChecker LevelGoalChecker { get; private set; }
