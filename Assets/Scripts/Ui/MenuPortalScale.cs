@@ -17,6 +17,7 @@ public class MenuPortalScale : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         transform.localScale = Vector3.zero;
         transform.position = startPos;
+        AudioManager.Instance.PlaySound("Flame");
         iTween.ScaleTo(gameObject, startScale, 1.5f);
     }
 }

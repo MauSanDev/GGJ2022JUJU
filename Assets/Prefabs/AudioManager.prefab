@@ -275,8 +275,8 @@ MonoBehaviour:
   - parentTransform: {fileID: 0}
     name: Flame
     clip: {fileID: 8300000, guid: 8ccf94875c80e460cb31f944d621375d, type: 3}
-    timeToStart: 2.15
-    volume: 0.3
+    timeToStart: 0
+    volume: 0.25
     pitch: 1
     loop: 0
     spatialBlend: 0
