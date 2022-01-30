@@ -212,3 +212,15 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: Button
+    clip: {fileID: 8300000, guid: 31cc86c38cb274163a8f5cf820c94d00, type: 3}
+    timeToStart: 0
+    volume: 0.15
+    pitch: 0.5
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
