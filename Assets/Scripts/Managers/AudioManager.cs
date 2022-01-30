@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Application.ExternalEval("window.focus();");
         InstantiateAudioSources();
         PlaySound("SoftCreepyWind");
         PlaySound("MusicPattern_2");
@@ -116,5 +122,19 @@ public class AudioManager : MonoBehaviour
         }
         
         sound.source.Stop();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.Equals("LightLevel"))
+        {
+            StopSound("MusicPattern_2");
+            PlaySound("BirdsChirping");
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

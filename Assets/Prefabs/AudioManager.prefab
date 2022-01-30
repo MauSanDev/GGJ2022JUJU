@@ -284,3 +284,39 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: SwitchOn
+    clip: {fileID: 8300000, guid: 827898e571a404d50af443751b1063fc, type: 3}
+    timeToStart: 0
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: SwitchOff
+    clip: {fileID: 8300000, guid: e9360f623c88440c08e4b80150970883, type: 3}
+    timeToStart: 0
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: BirdsChirping
+    clip: {fileID: 8300000, guid: eb75ea208865f4b4b9571c64fa4f68d5, type: 3}
+    timeToStart: 0
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 2
+    timeToFadeOut: 0
+    source: {fileID: 0}

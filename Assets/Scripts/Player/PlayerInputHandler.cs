@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private Camera mainCamera = null;
     [SerializeField] private List<AbstractPlayerInputListener> inputListeners = new List<AbstractPlayerInputListener>();
 
+    [SerializeField] private Sprite mafiu;
     public event Action<PlayerInputData> OnInputChanged;
 
     private Plane _rayPlane;
@@ -57,6 +58,15 @@ public class PlayerInputHandler : MonoBehaviour
         GetKeyboardInput();
         GetMouseInput();
         GetMouseClick();
+
+        if (Input.GetKeyDown(KeyCode.M) && Input.GetKeyDown(KeyCode.N))
+        {
+            SpriteRenderer[] components = GameObject.FindObjectsOfType<SpriteRenderer>();
+            foreach (SpriteRenderer renderer in components)
+            {
+                renderer.sprite = mafiu;
+            }
+        }
     }
 
     private void GetMouseClick()

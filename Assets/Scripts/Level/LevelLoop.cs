@@ -39,7 +39,7 @@ public class LevelLoop : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex > 1)
+        if (scene.name.Contains("Level") && !scene.name.Equals("Level1"))
         {
             if(AudioManager.Instance != null)
                 AudioManager.Instance.PlaySound("DoorUnlocked");
@@ -49,6 +49,12 @@ public class LevelLoop : MonoBehaviour
         {
             if(AudioManager.Instance != null)
                 AudioManager.Instance.PlaySound("GhostWhispers", true);
+        }
+
+        if (!scene.name.Equals("MainMenu"))
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 
