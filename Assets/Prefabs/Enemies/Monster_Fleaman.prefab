@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 8366410194070173810}
   - component: {fileID: 8366410194070173813}
   - component: {fileID: 2398897205423917598}
+  - component: {fileID: 1484885723}
+  - component: {fileID: 1484885724}
+  - component: {fileID: 1484885722}
+  - component: {fileID: 1484885728}
   m_Layer: 0
   m_Name: Monster_Fleaman
   m_TagString: Untagged
@@ -66,6 +70,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8366410194070173813}
   invertAxis: 0
+--- !u!50 &1484885723
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366410194070173812}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &1484885724
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366410194070173812}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08, y: 0.65}
+  serializedVersion: 2
+  m_Radius: 0.28
+--- !u!114 &1484885722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366410194070173812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93670aea089324586380cd71672078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointsComponent: {fileID: 0}
+  hasToRotate: 0
+  followPlayer: 1
+  speed: 0.5
+  runAway: 1
+  multiplySpeed: 1
+  multiplierSpeed: 0.5
+  movementListeners:
+  - {fileID: 2398897205423917598}
+  isIlluminated: 0
+  runawayTime: 1.2
+--- !u!114 &1484885728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366410194070173812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac906741d91de5149b9befa3ea7b2949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfLightToConsume: 0.15
+  amountOfLightToRecharge: 0.2
+  onInactiveMaterial: {fileID: 0}
+  onActiveMaterial: {fileID: 0}
+  spriteRenderers: []
+  portal: {fileID: 0}
 --- !u!1001 &8366410193960759220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,15 +185,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8523395868242428476, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.0004711151
+      value: -0.00046873093
       objectReference: {fileID: 0}
     - target: {fileID: -8523395868242428476, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.0016355515
+      value: -0.0016365051
       objectReference: {fileID: 0}
     - target: {fileID: -8523395868242428476, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 3.10216
+      value: 3.1021574
       objectReference: {fileID: 0}
     - target: {fileID: -8523395868242428476, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -148,6 +230,14 @@ PrefabInstance:
     - target: {fileID: -451586868975411399, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -34817980248211594, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -34817980248211594, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1001227525
       objectReference: {fileID: 0}
     - target: {fileID: 2566737799177221955, guid: 40491349c0c701745a19566abb88dbc8, type: 3}
       propertyPath: m_LocalRotation.w

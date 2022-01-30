@@ -1,136 +1,86 @@
+using System;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, ILighteable
 {
     [SerializeField] private EnemyWaypoints waypointsComponent;
-    [SerializeField] private bool hasToRotate;
-    
-    [Header("Initial movement")]
-    [SerializeField] private bool followPlayer;
-    [Header("Speed")]
-    [SerializeField] private float speed;
-    [Header("When is illuminated")]
-    [SerializeField] private bool runAway;
-    [SerializeField] private bool multiplySpeed;
-    [SerializeField] private float multiplierSpeed;
+    [SerializeField] private LayerMask playerLayer;
 
-    private Rigidbody2D rb = null;
-    private const string target = "Player";
-    private Transform player;
+    [Header("Behaviors")] 
+    [SerializeField] private AbstractEnemyBehavior initialBehavior;
+    [SerializeField] private AbstractEnemyBehavior proximityBehavior;
+    [SerializeField] private AbstractEnemyBehavior illuminatedBehavior;
+    [SerializeField] private TriggerListener proximityTrigger;
+
     private Vector2 movement;
-    private bool hasToPatrol;
     public bool isIlluminated;
     private Vector2 initialPosition;
-    private bool staticEnemy;
 
+    private void BindBehaviors()
+    {
+        if (initialBehavior != null)
+        {
+            initialBehavior.OnBehaviorEnded += OnBehaviorStopped;
+        }
+        if (illuminatedBehavior != null)
+        {
+            illuminatedBehavior.OnBehaviorEnded += OnBehaviorStopped;
+        }
+        if (proximityBehavior != null)
+        {
+            proximityBehavior.OnBehaviorEnded += OnBehaviorStopped;
+        }
+    }
+    
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag(target).transform;
-        hasToPatrol = waypointsComponent != null;
         initialPosition = transform.position;
-        staticEnemy = !hasToPatrol && !followPlayer;
+        BindBehaviors();
+
+        if (proximityTrigger != null && proximityBehavior != null)
+        {
+            proximityTrigger.onTriggerEnter += OnProximityTrigger;
+        }
+
+        ExecuteBehavior(initialBehavior);
     }
 
-    private void FixedUpdate()
+    private void OnDestroy()
     {
-        Behave();
+        if (proximityTrigger != null && proximityBehavior != null)
+        {
+            proximityTrigger.onTriggerEnter += OnProximityTrigger;
+        }
     }
 
-    private void Behave()
+    private void OnProximityTrigger(Collider2D other)
     {
-        if (isIlluminated)
+        if (playerLayer == (playerLayer | (1 << other.gameObject.layer)))
         {
-            IlluminatedBehaviour();
-        }
-        else
-        {
-            InitialBehaviour();
+            StopBehavior(initialBehavior);
+            StopBehavior(illuminatedBehavior);
+            ExecuteBehavior(proximityBehavior);
         }
     }
 
-    private Transform Target => hasToPatrol ? waypointsComponent.GetWaypointPosition(transform) : player;
-
-    private void IlluminatedBehaviour()
+    private void OnBehaviorStopped()
     {
-        if (runAway)
+        if ((initialBehavior == null || !initialBehavior.IsExecuting) && 
+            (proximityBehavior == null || !proximityBehavior.IsExecuting) &&
+            (illuminatedBehavior == null || !illuminatedBehavior.IsExecuting))
         {
-            RunAway();
-            Rotate(player);
+            ExecuteBehavior(initialBehavior);
         }
-        else
-        {
-            MoveToTarget(player.position);
-            Rotate(player);
-        }
-    }
-
-    private void InitialBehaviour()
-    {
-        if (followPlayer || hasToPatrol)
-        {
-            MoveToTarget(Target.position);
-            Rotate(Target);
-        }
-
-        if (staticEnemy)
-        {
-            StaticEnemyBehaviour();
-        }
-    }
-
-    private void StaticEnemyBehaviour()
-    { 
-        float distance = Vector2.Distance(initialPosition, transform.position);
-        if (distance > 0.5f)
-        {
-            MoveToTarget(initialPosition);
-        }
-    }
-    
-    private float Speed => isIlluminated &&  multiplySpeed ? (speed * multiplierSpeed) : speed;
-
-    private bool ReachPlayer
-    {
-        get
-        {
-            float distance = Vector2.Distance (player.position, transform.position);
-            return distance < 0.5f;
-        }
-    }
-    
-    private void MoveToTarget(Vector2 target)
-    {
-        if (!ReachPlayer)
-        {
-            Vector2 direction = (Vector2)target - rb.position;
-            direction.Normalize();
-            Vector2 vector = direction * Speed;
-            rb.MovePosition(rb.position + vector * Time.fixedDeltaTime);
-        }
-    }
-
-    private void Rotate(Transform target)
-    {
-        if (hasToRotate)
-        {
-            Vector2 targetDirection = target.position - transform.position;
-            targetDirection.Normalize();
-            float targetRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = targetRotation;    
-        }
-    }
-    
-    private void RunAway()
-    {
-        Vector2 direction = (Vector2)player.position - rb.position;
-        direction.Normalize();
-        Vector2 vector = direction * -Speed;
-        rb.MovePosition(rb.position + vector * Time.deltaTime);
     }
 
     public void OnLightEnter()
     {
+        if (illuminatedBehavior != null)
+        {
+            StopBehavior(initialBehavior);
+            StopBehavior(proximityBehavior);
+            ExecuteBehavior(illuminatedBehavior);
+        }
         isIlluminated = true;
     }
 
@@ -138,4 +88,76 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
     {
         isIlluminated = false;
     }
+    
+    private void StopBehavior(AbstractEnemyBehavior behavior)
+    {
+        if (behavior != null)
+        {
+            behavior.StopBehavior();
+        }
+    }
+
+    private void ExecuteBehavior(AbstractEnemyBehavior behavior)
+    {
+        if (behavior != null)
+        {
+            behavior.ExecuteBehavior();
+        }
+    }
+}
+
+public abstract class AbstractEnemyBehavior : MonoBehaviour
+{
+    private const string TARGET_LAYER = "Player";
+    
+    protected Rigidbody2D rigidBody = null;
+    protected Transform player;
+    
+    
+    [SerializeField] private AbstractMovementListener[] movementListeners;
+    
+
+    protected void UpdateMovementListeners(Vector3 movement)
+    {
+        foreach (var listener in movementListeners)
+        {
+            listener.OnMovementChanged(movement);
+        }
+    }
+    
+    private void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag(TARGET_LAYER).transform;
+    }
+
+    private bool isExecuting = false;
+    public bool IsExecuting => isExecuting;
+    
+    public event Action OnBehaviorEnded;
+
+    public void ExecuteBehavior()
+    {
+        isExecuting = true;
+        OnBehaviorStart();
+    }
+
+    protected abstract void OnBehaviorStart();
+    
+    protected abstract void Behave();
+    
+    private void Update()
+    {
+        if (isExecuting)
+        {
+            Behave();
+        }
+    }
+
+    public void StopBehavior()
+    {
+        isExecuting = false;
+        OnBehaviorEnded?.Invoke();
+    }
+
 }

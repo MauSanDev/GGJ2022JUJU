@@ -10,7 +10,7 @@ public class LightHandler : MonoBehaviour
     [SerializeField] private Material onActiveMaterial = null;
     [SerializeField] private SpriteRenderer[] spriteRenderers = null;
     [SerializeField] private PortalBehaviour portal = null;
-    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Collider2D collider = null;
     
     private float lightAmount;
     private Coroutine drainRoutine;
@@ -19,12 +19,13 @@ public class LightHandler : MonoBehaviour
     private PlayerInputHandler input;
     private void Start()
     {
-        rigidBody = this.GetComponent<Rigidbody2D>();
-
         lightAmount = LevelData.CurrentLevelData.LanternStartAmount;
         input = LevelData.CurrentLevelData.InputHandler;
-        
-        portal.EnableParticles(false);
+
+        if (portal != null)
+        {
+            portal.EnableParticles(false);
+        }
         
         AssignMaterial(onInactiveMaterial);
         input.OnMouseClickHoldStart += OnMouseClickStart;
@@ -42,7 +43,8 @@ public class LightHandler : MonoBehaviour
             AssignMaterial(onInactiveMaterial);
             AudioManager.Instance.StopSound("Buzz_1");
             portal.EnableParticles(false);
-            rigidBody.simulated = false;
+            collider.enabled = false;
+
         }
     }
 
@@ -62,7 +64,7 @@ public class LightHandler : MonoBehaviour
             AssignMaterial(onActiveMaterial);
             AudioManager.Instance.PlaySound("Buzz_1");
             portal.EnableParticles(true);
-            rigidBody.simulated = true;
+            collider.enabled = true;
         }
         else
         {

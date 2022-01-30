@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 3545213063904394153}
   - component: {fileID: 3545213063904394154}
   - component: {fileID: 7744359357866451113}
+  - component: {fileID: 1064342264}
+  - component: {fileID: 1064342263}
+  - component: {fileID: 1064342261}
+  - component: {fileID: 1064342262}
   m_Layer: 0
   m_Name: Monster_TheHaunted
   m_TagString: Untagged
@@ -65,7 +69,85 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3545213063904394154}
-  invertAxis: 0
+  invertAxis: 1
+--- !u!50 &1064342264
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &1064342263
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08, y: 0.65}
+  serializedVersion: 2
+  m_Radius: 0.28
+--- !u!114 &1064342261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93670aea089324586380cd71672078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointsComponent: {fileID: 0}
+  hasToRotate: 0
+  followPlayer: 1
+  speed: 0.5
+  runAway: 0
+  multiplySpeed: 0
+  multiplierSpeed: 0.5
+  movementListeners:
+  - {fileID: 7744359357866451113}
+  isIlluminated: 0
+  runawayTime: 1.2
+--- !u!114 &1064342262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3545213063904394155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac906741d91de5149b9befa3ea7b2949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfLightToConsume: 0.15
+  amountOfLightToRecharge: 0.2
+  onInactiveMaterial: {fileID: 0}
+  onActiveMaterial: {fileID: 0}
+  spriteRenderers: []
+  portal: {fileID: 0}
 --- !u!1001 &3545213065671586292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,6 +219,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3878724662853164346, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3878724662853164346, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1001227525
+      objectReference: {fileID: 0}
     - target: {fileID: -3423463982986688701, guid: 245908736523d0944a608f5349dca815, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8871798
@@ -168,6 +258,14 @@ PrefabInstance:
     - target: {fileID: -3143910727086511684, guid: 245908736523d0944a608f5349dca815, type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 2.5149999
+      objectReference: {fileID: 0}
+    - target: {fileID: -2862617692479656871, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2862617692479656871, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1001227525
       objectReference: {fileID: 0}
     - target: {fileID: -800198228498468266, guid: 245908736523d0944a608f5349dca815, type: 3}
       propertyPath: m_RootOrder
@@ -292,6 +390,14 @@ PrefabInstance:
     - target: {fileID: 2411423938587017166, guid: 245908736523d0944a608f5349dca815, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065623748490967988, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065623748490967988, guid: 245908736523d0944a608f5349dca815, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1001227525
       objectReference: {fileID: 0}
     - target: {fileID: 4276504242660586285, guid: 245908736523d0944a608f5349dca815, type: 3}
       propertyPath: m_Bounds.m_Center.x
