@@ -176,3 +176,15 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: GhostWhispers
+    clip: {fileID: 8300000, guid: c8b73fb3f99d740d69e7e7a5f5a6cdd7, type: 3}
+    timeToStart: 0
+    volume: 0.03
+    pitch: 1
+    loop: 1
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 3
+    timeToFadeOut: 0
+    source: {fileID: 0}
