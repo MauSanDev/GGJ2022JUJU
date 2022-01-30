@@ -129,7 +129,7 @@ public class AudioManager : MonoBehaviour
         if (scene.name.Equals("LightLevel"))
         {
             StopSound("MusicPattern_2");
-            PlaySound("BirdsChirping");
+            PlaySound("BirdsChirping", true);
         }
     }
     
