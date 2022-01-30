@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &847473057338368984
 Transform:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionAction: {fileID: 7688021871492476156}
   singleInteraction: 0
-  isEnabledToInteract: 0
+  isEnabledToInteract: 1
   interactionType: 1
   enabledSprite: {fileID: 847473056771223008}
   disabledSprite: {fileID: 847473057338368964}
