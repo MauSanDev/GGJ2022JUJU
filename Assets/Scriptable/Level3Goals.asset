@@ -16,7 +16,7 @@ MonoBehaviour:
   tutorialText: 
   delayToShow: 1
   levelGoals:
-    keysAmount: 1
+    keysAmount: 0
     pressurePlates: 0
-    enabledPillars: 1
+    enabledPillars: 0
     patternId: 

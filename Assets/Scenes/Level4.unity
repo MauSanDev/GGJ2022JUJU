@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8366410194070173812, guid: 1296626a474c4b64c97dc25025610b7a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1296626a474c4b64c97dc25025610b7a, type: 3}
@@ -2902,7 +2902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8366410194070173812, guid: 1296626a474c4b64c97dc25025610b7a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1296626a474c4b64c97dc25025610b7a, type: 3}
@@ -8611,7 +8611,7 @@ PrefabInstance:
       objectReference: {fileID: 917396366}
     - target: {fileID: -5229223412989150031, guid: 0a731455a57e89040a2a1c1b4c82ae5d, type: 3}
       propertyPath: nextLevelName
-      value: FinalLevel
+      value: Level5
       objectReference: {fileID: 0}
     - target: {fileID: -5229223412989150031, guid: 0a731455a57e89040a2a1c1b4c82ae5d, type: 3}
       propertyPath: playerStartPos

@@ -13,7 +13,7 @@ public class LevelLoop : MonoBehaviour
     {
         player.transform.position = playerStartPos.position;
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_LEVEL_COMPLETE, OnLevelComplete);
-        EventsManager.SubscribeToEvent(EvenManagerConstants.RESET_LEVEL, OnLevelComplete);
+        EventsManager.SubscribeToEvent(EvenManagerConstants.RESET_LEVEL, OnLevelReset);
         SceneManager.sceneLoaded += OnSceneLoaded;
         _playerInputHandler = FindObjectOfType<PlayerInputHandler>();
     }
