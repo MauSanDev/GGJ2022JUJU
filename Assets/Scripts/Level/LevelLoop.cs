@@ -51,12 +51,7 @@ public class LevelLoop : MonoBehaviour
                 AudioManager.Instance.PlaySound("GhostWhispers", true);
         }
 
-        if (scene.name.Equals("MainMenu"))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
+        if (!scene.name.Equals("MainMenu"))
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
