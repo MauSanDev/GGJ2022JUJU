@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 9110551325484629107}
   - component: {fileID: 241797141238342087}
   - component: {fileID: 3130569954892969588}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MovableInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   lookAtMousePos: 0
+  timeBeforeDeathOnZone: 3
 --- !u!81 &-4724235703688000801
 AudioListener:
   m_ObjectHideFlags: 0
