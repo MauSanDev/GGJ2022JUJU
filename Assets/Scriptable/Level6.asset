@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5c5a112f5a7444390b6e7248cc8798, type: 3}
-  m_Name: Level1-Mau-Data
+  m_Name: Level6
   m_EditorClassIdentifier: 
   lanternStartAmount: 0.2
   tutorialText: Lit the pilars to open the door
