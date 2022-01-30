@@ -8,6 +8,8 @@ public class LoseScreenHandler : MonoBehaviour
     [SerializeField] private Image monsterImage;
     [SerializeField] private GameObject container;
     [SerializeField] private float transitionTime = 3f;
+
+    private PlayerInputHandler _playerInputHandler = null;
     
     public static LoseScreenHandler Instance = null;
 
@@ -19,6 +21,8 @@ public class LoseScreenHandler : MonoBehaviour
         }
 
         Instance = this;
+        
+        _playerInputHandler = FindObjectOfType<PlayerInputHandler>();
     }
 
     public void ShowLooseScreen(Sprite imageToShow = null)
@@ -27,6 +31,8 @@ public class LoseScreenHandler : MonoBehaviour
         {
             monsterImage.sprite = imageToShow;
         }
+
+        _playerInputHandler.EnableInputs = false;
 
         StartCoroutine(LooseRoutine());
     }

@@ -47,8 +47,13 @@ public class PlayerInputHandler : MonoBehaviour
             OnInputChanged -= listener.OnInputChanged;
         }
     }
+
+    public bool EnableInputs { get; set; } = true;
+
     private void Update()
     {
+        if (!EnableInputs) return;
+        
         GetKeyboardInput();
         GetMouseInput();
         GetMouseClick();

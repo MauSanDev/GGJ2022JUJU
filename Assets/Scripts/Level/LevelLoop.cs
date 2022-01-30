@@ -6,6 +6,8 @@ public class LevelLoop : MonoBehaviour
     [SerializeField] private string nextLevelName;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform playerStartPos;
+
+    private PlayerInputHandler _playerInputHandler = null;
     
     private void Awake()
     {
@@ -13,6 +15,7 @@ public class LevelLoop : MonoBehaviour
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_LEVEL_COMPLETE, OnLevelComplete);
         EventsManager.SubscribeToEvent(EvenManagerConstants.RESET_LEVEL, OnLevelComplete);
         SceneManager.sceneLoaded += OnSceneLoaded;
+        _playerInputHandler = FindObjectOfType<PlayerInputHandler>();
     }
     
     private void Update()
@@ -31,6 +34,7 @@ public class LevelLoop : MonoBehaviour
     private void OnLevelComplete(object[] parametercontainer)
     {
         SceneManager.LoadScene(nextLevelName);
+        _playerInputHandler.EnableInputs = true;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
