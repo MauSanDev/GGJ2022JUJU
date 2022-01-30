@@ -192,7 +192,7 @@ MonoBehaviour:
     name: ChestOpen
     clip: {fileID: 8300000, guid: 3eb68a16143a6410aa1510a0e60cf147, type: 3}
     timeToStart: 0
-    volume: 0.3
+    volume: 0.25
     pitch: 1
     loop: 0
     spatialBlend: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     name: TorchOn
     clip: {fileID: 8300000, guid: a69e656b95cea4932b689c153eab88da, type: 3}
     timeToStart: 0
-    volume: 0.3
+    volume: 0.25
     pitch: 1
     loop: 0
     spatialBlend: 0
