@@ -117,6 +117,7 @@ MonoBehaviour:
   onActiveMaterial: {fileID: 0}
   spriteRenderers: []
   portal: {fileID: 2627136925163140749}
+  collider: {fileID: 6070179298949403215}
 --- !u!50 &6070179298949403187
 Rigidbody2D:
   serializedVersion: 4
