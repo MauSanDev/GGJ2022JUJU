@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,11 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private bool lookAtMousePos = false;
+    [SerializeField] private float timeBeforeDeathOnZone = 3f;
     
     private Rigidbody2D _rigidbody = null;
     private PlayerInputHandler _inputHandler = null;
     private string[] _footsteps;
-
+    private bool _onDeathZone = false;
+    private float _currentTime = 0f;
+    private LightHandler _lightHandler = null;
+    
     public Vector3 currMovement 
     {
         get;
@@ -23,6 +28,12 @@ public class PlayerController : MonoBehaviour
         _inputHandler = GetComponent<PlayerInputHandler>();
         _footsteps = new[] { "Footstep_1", "Footstep_2", "Footstep_3" };
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_PLAYER_STEP, OnStep);
+        _lightHandler = FindObjectOfType<LightHandler>();
+    }
+
+    private void Update()
+    {
+        CheckForDeathZone();
     }
 
     private void FixedUpdate()
@@ -49,10 +60,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckForDeathZone()
+    {
+        if (_lightHandler == null) return;
+        
+        _currentTime = _onDeathZone && !_lightHandler.HasLight ? _currentTime + Time.deltaTime : 0f;
+
+        if (_currentTime >= timeBeforeDeathOnZone && !_lightHandler.HasLight)
+        {
+            Debug.Log("DIE");
+            _currentTime = 0f;
+        }
+    }
+    
     private void OnStep(object[] parameters)
     {
         int soundIndex = Utility.Random.Next(_footsteps.Length);
         AudioManager.Instance.PlaySound(_footsteps[soundIndex]);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            _onDeathZone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            _onDeathZone = false;
+        }
     }
 
     private void OnDestroy()
