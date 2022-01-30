@@ -118,9 +118,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - parentTransform: {fileID: 0}
     name: Buzz_1
-    clip: {fileID: 8300000, guid: f1c8f99eb4e544dfcb9aea5b55325e6c, type: 3}
+    clip: {fileID: 8300000, guid: 09ae517356d9447519549988655682b4, type: 3}
     timeToStart: 0
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     spatialBlend: 0.5
@@ -154,10 +154,10 @@ MonoBehaviour:
     source: {fileID: 0}
   - parentTransform: {fileID: 0}
     name: ChargeUp
-    clip: {fileID: 8300000, guid: 91553947fb4704166a919eb811f73e8e, type: 3}
+    clip: {fileID: 8300000, guid: f1c8f99eb4e544dfcb9aea5b55325e6c, type: 3}
     timeToStart: 0
-    volume: 0.25
-    pitch: 0.3
+    volume: 0.15
+    pitch: 1
     loop: 0
     spatialBlend: 0.5
     minDistance: 0
