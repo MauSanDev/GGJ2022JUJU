@@ -31,9 +31,14 @@ public class ShowTextBehaviour : MonoBehaviour
     
     public void ShowText(string textToShow)
     {
+        if (string.IsNullOrEmpty(textToShow))
+        {
+            return;
+        }
+        
         textsToShow.Enqueue(textToShow);
         
-        if (!string.IsNullOrEmpty(textToShow) && textRoutine == null)
+        if (textRoutine == null)
         {
             textRoutine = StartCoroutine(ShowTextRoutine());
         }

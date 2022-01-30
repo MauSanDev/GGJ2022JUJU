@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.7
+  m_Radius: 10
 --- !u!114 &712535032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   illuminatedBehavior: {fileID: 0}
   proximityTrigger: {fileID: 712535032}
   enemyFaceSprite: {fileID: -8379902244668130065, guid: da3945a49257ae14d8a278b09712f528, type: 3}
+  stopLightBehaviorOnExit: 0
   isIlluminated: 0
 --- !u!114 &1680299429
 MonoBehaviour:
@@ -282,15 +283,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6194400316166166378, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.0022854805
+      value: -0.002285242
       objectReference: {fileID: 0}
     - target: {fileID: -6194400316166166378, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.0018644333
+      value: 0.0018649101
       objectReference: {fileID: 0}
     - target: {fileID: -6194400316166166378, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 3.1927152
+      value: 3.1927154
       objectReference: {fileID: 0}
     - target: {fileID: -6194400316166166378, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -474,11 +475,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657480413944595307, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0
+      value: -0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: 5657480413944595307, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.00000166893
+      value: 0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 5657480413944595307, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -486,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409993303935186248, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.0023839474
+      value: -0.0023841858
       objectReference: {fileID: 0}
     - target: {fileID: 6409993303935186248, guid: da3945a49257ae14d8a278b09712f528, type: 3}
       propertyPath: m_Bounds.m_Center.y
