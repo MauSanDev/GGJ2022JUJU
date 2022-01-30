@@ -6,5 +6,6 @@ public class KeyInteractionAction : AbstractInteractionAction
     {
         ShowTextBehaviour.Instance.ShowText("You found a key");
         LevelData.CurrentLevelData.LevelGoalChecker.RegisterKey();
+        AudioManager.Instance.PlaySound("ChestOpen");
     }
 }
