@@ -104,6 +104,16 @@ public class EnemyBehaviour : MonoBehaviour, ILighteable
             behavior.ExecuteBehavior();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (playerLayer == (playerLayer | (1 << other.gameObject.layer)))
+        {
+            PlayerInputHandler controller = other.gameObject.GetComponent<PlayerInputHandler>();
+            controller.enabled = false;
+            LoseScreenHandler.Instance.ShowLooseScreen();
+        }
+    }
 }
 
 public abstract class AbstractEnemyBehavior : MonoBehaviour

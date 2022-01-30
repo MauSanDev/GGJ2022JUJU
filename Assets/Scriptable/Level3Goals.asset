@@ -15,3 +15,8 @@ MonoBehaviour:
   lanternStartAmount: 0
   tutorialText: Recharge your energy and find hiden pathways
   delayToShow: 1
+  levelGoals:
+    keysAmount: 1
+    pressurePlates: 0
+    enabledPillars: 1
+    patternId: 

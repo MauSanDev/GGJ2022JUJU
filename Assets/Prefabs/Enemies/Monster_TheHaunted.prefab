@@ -120,16 +120,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointsComponent: {fileID: 0}
-  hasToRotate: 0
-  followPlayer: 1
-  speed: 0.5
-  runAway: 0
-  multiplySpeed: 0
-  multiplierSpeed: 0.5
-  movementListeners:
-  - {fileID: 7744359357866451113}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  initialBehavior: {fileID: 0}
+  proximityBehavior: {fileID: 0}
+  illuminatedBehavior: {fileID: 0}
+  proximityTrigger: {fileID: 0}
   isIlluminated: 0
-  runawayTime: 1.2
 --- !u!114 &1064342262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +146,7 @@ MonoBehaviour:
   onActiveMaterial: {fileID: 0}
   spriteRenderers: []
   portal: {fileID: 0}
+  collider: {fileID: 0}
 --- !u!1001 &3545213065671586292
 PrefabInstance:
   m_ObjectHideFlags: 0

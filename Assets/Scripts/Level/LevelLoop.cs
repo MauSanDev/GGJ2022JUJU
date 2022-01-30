@@ -11,6 +11,7 @@ public class LevelLoop : MonoBehaviour
     {
         player.transform.position = playerStartPos.position;
         EventsManager.SubscribeToEvent(EvenManagerConstants.ON_LEVEL_COMPLETE, OnLevelComplete);
+        EventsManager.SubscribeToEvent(EvenManagerConstants.RESET_LEVEL, OnLevelComplete);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     
@@ -20,6 +21,11 @@ public class LevelLoop : MonoBehaviour
         {
             ResetCurrentLevel();
         }
+    }
+    
+    private void OnLevelReset(object[] parametercontainer)
+    {
+        ResetCurrentLevel();
     }
 
     private void OnLevelComplete(object[] parametercontainer)
