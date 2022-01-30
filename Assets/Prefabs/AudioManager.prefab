@@ -236,3 +236,27 @@ MonoBehaviour:
     timeToFadeIn: 0
     timeToFadeOut: 0
     source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: MusicPattern_1
+    clip: {fileID: 8300000, guid: 3d9ee7c4578024ab4af10e3ae23c6e75, type: 3}
+    timeToStart: 0
+    volume: 0.035
+    pitch: 1
+    loop: 1
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
+  - parentTransform: {fileID: 0}
+    name: MusicPattern_2
+    clip: {fileID: 8300000, guid: ca177efea8b804a0f9d9488eafdde48d, type: 3}
+    timeToStart: 2.15
+    volume: 0.035
+    pitch: 1
+    loop: 1
+    spatialBlend: 0
+    minDistance: 0
+    timeToFadeIn: 0
+    timeToFadeOut: 0
+    source: {fileID: 0}
