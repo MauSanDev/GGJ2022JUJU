@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f368b825b6ba454cb196c30c240daa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementListeners: []
+  movementListeners:
+  - {fileID: 2398897205423917598}
   movementSpeed: 2
 --- !u!114 &8464417820190337578
 MonoBehaviour:
@@ -157,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1416d23db3b72f246902a3910ecc6e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementListeners: []
+  movementListeners:
+  - {fileID: 2398897205423917598}
   movementSpeed: 5
   runawayTime: 3
 --- !u!1001 &8366410193960759220

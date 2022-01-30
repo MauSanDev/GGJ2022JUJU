@@ -20,6 +20,5 @@ public class DontFocusEnemyBehavior : AbstractEnemyBehavior
         }
 
         focusedTime += Time.deltaTime;
-        Debug.Log(focusedTime);
     }
 }
