@@ -10,6 +10,7 @@ public class LightHandler : MonoBehaviour
     [SerializeField] private Material onActiveMaterial = null;
     [SerializeField] private SpriteRenderer[] spriteRenderers = null;
     [SerializeField] private PortalBehaviour portal = null;
+    [SerializeField] private Collider2D collider = null;
     
     private float lightAmount;
     private Coroutine drainRoutine;
@@ -42,6 +43,7 @@ public class LightHandler : MonoBehaviour
             AssignMaterial(onInactiveMaterial);
             AudioManager.Instance.StopSound("Buzz_1");
             portal.EnableParticles(false);
+            collider.enabled = false;
         }
     }
 
@@ -61,6 +63,7 @@ public class LightHandler : MonoBehaviour
             AssignMaterial(onActiveMaterial);
             AudioManager.Instance.PlaySound("Buzz_1");
             portal.EnableParticles(true);
+            collider.enabled = true;
         }
         else
         {
@@ -112,10 +115,6 @@ public class LightHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!input.IsMousePressed)
-        {
-            return;
-        }
         ILighteable lighteable = other.GetComponent<ILighteable>();
         
         lighteable?.OnLightEnter();
@@ -123,10 +122,6 @@ public class LightHandler : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (input.IsMousePressed)
-        {
-            return;
-        }
         ILighteable lighteable = other.GetComponent<ILighteable>();
         
         lighteable?.OnLightExit();
