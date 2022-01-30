@@ -37,12 +37,14 @@ public class LevelLoop : MonoBehaviour
     {
         if (scene.buildIndex > 1)
         {
-            AudioManager.Instance.PlaySound("DoorUnlocked");
+            if(AudioManager.Instance != null)
+                AudioManager.Instance.PlaySound("DoorUnlocked");
         }
 
         if (scene.name.Equals("Level3"))
         {
-            AudioManager.Instance.PlaySound("GhostWhispers", true);
+            if(AudioManager.Instance != null)
+                AudioManager.Instance.PlaySound("GhostWhispers", true);
         }
     }
 
