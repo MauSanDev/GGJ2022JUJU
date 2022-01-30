@@ -5924,7 +5924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342d8267ba38746479076a7b4c88a6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Level1
+  scene: Intro
   turnOn: {fileID: 175750702}
 --- !u!114 &272525354
 MonoBehaviour:
@@ -14368,6 +14368,7 @@ MonoBehaviour:
     m_Bits: 64
   enabledSprite: {fileID: 7684256553836759549}
   disabledSprite: {fileID: 0}
+  enabledGO: {fileID: 0}
 --- !u!114 &7684256553359921426
 MonoBehaviour:
   m_ObjectHideFlags: 0
