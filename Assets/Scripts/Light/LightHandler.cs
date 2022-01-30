@@ -143,7 +143,7 @@ public class LightHandler : MonoBehaviour
         }
     }
 
-    private bool HasLight => !Mathf.Approximately(lightAmount, 0);
+    public bool HasLight => !Mathf.Approximately(lightAmount, 0);
     public bool LightIsFull => lightAmount >= 1;
 
     public void StartChargingLight()
